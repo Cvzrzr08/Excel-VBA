@@ -1,0 +1,61 @@
+'malas prácticas
+Sub ejem1()
+        Rows(5).Select
+End Sub
+'macro con buena práctica
+Sub ejem2()
+    Rows("10").Select
+End Sub
+    
+'selección de multiples filas
+Sub ejem3()
+    Rows("6:15").Select
+End Sub
+
+'selección de un rango de filas
+Sub ejem4()
+    Range("1:5, 10:15").Select
+End Sub
+
+
+
+
+'selección de columnas
+Sub Ejem5()
+    Columns(4).Select
+End Sub
+
+'selección de columnas con letras
+Sub Ejem6()
+    Columns("D:D").Select
+End Sub
+
+Sub Ejem7()
+    Columns("A:D").Select
+End Sub
+
+Sub Ejem8()
+    Range("A:D,F:I").Select
+End Sub
+
+
+''Selección por medio de variables
+Sub Ejem9()
+    filaActiva = 5
+    Rows(filaActiva).Select
+End Sub
+
+Sub Ejem10()
+    columnaActiva = 5
+    Columns(columnaActiva).Select
+End Sub
+
+
+'para borrar contenido, por medio de columns o rows
+Sub Ejem11()
+    Columns.ClearContents
+End Sub
+
+Sub Ejem12()
+    Columns.ClearContents
+End Sub

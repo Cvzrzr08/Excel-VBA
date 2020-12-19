@@ -1,0 +1,105 @@
+''copiar el valor de una celda a otra y viceversa(Activecells)
+
+'copiar el valor de la celda "D10 a "D11", con metacomando CTRL+a
+Sub copyValEntreCells()
+    'Var:
+    oeste = 10
+    norte = 4
+    
+    
+    
+    'seleccionando D10
+    Cells(oeste, norte).Select
+    
+    'copiando con active-cell
+    valor = ActiveCell
+    
+    'reasignando valores de posicionamiento para desplazarse
+    oeste = oeste + 1
+        
+        'mandando la nueva posicion
+        Cells(oeste, norte).Select
+        'copiando el valor de D10 a D11
+        Cells(oeste, norte) = valor
+    
+End Sub
+
+
+'copiar el valor de la celda "F10 a "F11", con metacomando CTRL+b
+
+Sub copyValorEntreCells2()
+    oeste = 10
+    norte = 6
+    
+    Cells(oeste, norte).Select
+    valor = ActiveCell
+    
+    oeste = 10 + 5
+    Cells(oeste, norte).Select
+    Cells(oeste, norte) = valor
+    
+End Sub
+
+'Notas:
+'copiado en VBA, todas son iguales
+'ActiveCell
+'Application.ActiveCell
+'ActiveWindow.ActiveCell
+'Application.ActiveWindow.ActiveCell
+
+
+'Copiando cell "B10" sin mover cursor a la posicion "C12", metacomando CTRL+l
+Sub copiarFechaSinMoverCursor()
+    'Declarando variables de pocisiones
+    filaActual = 10
+    columnaActual = 2
+    fecha = Cells(filaActual, columnaActual) 'Var = cell
+    filaActual = filaActual + 2
+    columnaActual = columnaActual + 1
+    Cells(filaActual, columnaActual) = fecha 'depositando en una celda el valor de fecha
+End Sub
+
+
+
+'copiar de "B13" a "G20" de manera normal, metacomando CTRL+k
+Sub copiarBaGNormal()
+    Fact = 13
+    Cact = 2
+    
+    Cells(Fact, Cact).Select
+    valor = ActiveCell
+    
+    Fact = Fact + 7
+    Cact = Cact + 5
+    
+    Cells(Fact, Cact).Select
+    Cells(Fact, Cact) = valor
+
+End Sub
+
+'copiar de "G1" a "A1" de manera inversa, metacomando CTRL+j
+
+Sub copiaInversaNormal()
+    FactInv = 1
+    CactInv = 7
+    
+    Cells(FactInv, CactInv).Select
+    valor = ActiveCell
+    CactInv = CactInv - 6
+    Cells(FactInv, CactInv).Select
+    Cells(FactInv, CactInv) = valor
+End Sub
+
+'copiar de "B23" a "G30" sin mover cursos , metacomando CTRL+m
+Sub copiarBaGNormalSinMoverCursor()
+    FActSinCursor = 23
+    CActSinCursor = 2
+    
+    barV = Cells(FActSinCursor, CActSinCursor)
+    FActSinCursor = FActSinCursor + 7
+    CActSinCursor = CActSinCursor + 5
+    
+    Cells(FActSinCursor, CActSinCursor) = barV
+
+End Sub
+

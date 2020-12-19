@@ -1,0 +1,56 @@
+''Ejemplos de seleccion de celdas.
+
+'Ejemplo_1
+'Seleccionar celda "B7", con metacomando CTRL+a
+Sub Eje_1()
+    Range("B7").Select
+    'Renge, se utiliza mas para un parametro
+End Sub
+
+
+'Ejemplo  _2
+'Seleccionar Rango "B2" a "E4", con metacomando CTRL+b
+Sub Eje_2()
+    Range("B2:E4").Select
+End Sub
+
+'Ejemplo_3
+'Seleccionar "F3" , con metacomando CTRL+c(forma polar)
+Sub Eje_3()
+    Cells(3, 6).Select
+    'siempre prural en este modo, es la forma convencional
+End Sub
+
+'Ejemplo_4
+'Seleccionar Rango "A2" a "H14", con metacomando CTRL+d
+Sub Eje_4()
+    'Range("A2:H14").Select, otro modo:
+    Range(Cells(1, 1), Cells(14, 8)).Select
+End Sub
+
+
+'Ejemplo_5
+'Seleccionar la celda "B9"(con var), con metacomando CTRL+e
+Sub Eje_5()
+'declarando var.
+    fila = 9
+    colu = 2
+    Cells(fila, colu).Select
+End Sub
+
+'Ejemplo_6
+'Seleccionar la celda "A2"(con var), con metacomando CTRL+f
+Sub Eje_6()
+    'lo que queremos
+    Range("A1").Select 'select rango A1
+    filaActual = Selection  'seguido se le cambia el nombre a filaActual y sigue seleccionado
+    Range("A2").Select 'selecciona rango A2
+    columnaActual = Selection 'renombrando A2 a columnaActual, que posterior sera seleccionado
+    Cells(filaActual, columnaActual).Select
+    filaActual = filaActual + 10 'procesando valor de filaActual, se le va a sumar el valor que tenga más 10
+    'columnaActual = columnaActual + 2 'para hacerlo mas evidente
+    Cells(filaActual, columnaActual).Select 'en la cuadricula aventará la seleccion de D15
+    
+End Sub
+
+
