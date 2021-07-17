@@ -1,0 +1,57 @@
+Attribute VB_Name = "Módulo1"
+'For next! For EachNext
+'for nos ayuda a repetir una instrucción n cantidad de veces
+Option Explicit
+
+Sub bucleFor()
+Dim i As Byte
+
+'creando el ciclo donde se dará la iteración
+For i = 1 To 5
+MsgBox ("el valor de i es:" & i)
+Next i
+End Sub
+
+
+'creando un indice de las hojas que tenemos en el doc. utilizando un contador
+Sub crearIndice()
+Dim hoja As Worksheet 'guardará la hoja nueva(que se inserte)
+Dim cantidadHojas As Integer 'contador-num-Hojas del archivo
+Dim i As Integer
+Dim nuevoNombre, Resp 'quedarán del tipo variant
+
+
+'1ro insertar una nueva hoja, antes de la primera hoja(
+ThisWorkbook.Sheets.Add before:=Sheets(1)
+
+'2do añadiendo la hoja activa a una var. -la que se agrego en 1ero
+Set hoja = Application.ActiveSheet
+
+'3ro rotulando el indice donde se listarán las hojas del doc
+    With hoja.Range("A1")
+            .Value = "Indice"
+            .Font.Bold = True
+    End With
+'4to contador que llevara los indices de las hojas en el doc.
+cantidadHojas = ThisWorkbook.Sheets.Count
+
+'5to creando la iteración del ciclo hasta n(cantidad de hojas)para el indice de las hojas existentes
+For i = 1 To cantidadHojas
+hoja.Range("A1").Offset(i, 0).Value = Sheets(i).Name
+                'recorrera i filas abajo, 0 columnas
+Next i
+
+'ya recorrido la última hoja, cuestinorá con:
+Resp = MsgBox("desea asignar nombre a la hoja nueva", vbYesNoCancel + vbQuestion, "Hv08")
+'var-guardará resultado tecleado                  'muestra boton: si, no cancelar + icono , tituloVentana
+
+    If Resp = vbYes Then
+        Application.Dialogs(xlDialogWorkbookName).Show
+        'cuadroDialogo, por defecto vba -para cambiar el nombre de la nueva hoja
+    Else
+    'nada
+    End If
+    
+End Sub
+
+
