@@ -1,0 +1,26 @@
+--################## UNION ALL  --SE REPITEN RESULTADOS
+--NOTA: SIEMPRE TIENE QUE TENER EL MISMO NUMERO DE PRINT AMBAS CONSULTAS
+SELECT 
+e.employee_name
+,e.employee_lastname
+,e.employee_salary
+,e.employee_positionName
+--,'QUERY1' AS #Source
+FROM Employees AS e
+								--1.-MOSTRARA EMPLEADOS QUE EN 'POSITION NAME CONTENGAN VENTAS
+WHERE e.employee_positionName LIKE '%VENTAS%'
+
+--UNION ALL --Repite resultados
+UNION  --DEVUELVE FILAS DISTINTAS O UNICAS --QUITAR REFERENCIA DE QUERY1 Y QUERY2
+
+SELECT 
+e1.employee_name
+,e1.employee_lastname
+,e1.employee_salary
+,e1.employee_positionName
+--,'QUERY2' 
+FROM Employees AS e1
+								--2.-MOSTRAR EMPLEADOS QUE PERCIBAN POR DEBAJO DE LOS 500
+WHERE e1.employee_salary <= 500
+
+ORDER BY employee_name DESC
