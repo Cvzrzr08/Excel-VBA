@@ -1,0 +1,51 @@
+Sub transferirDatosOtraHoja()
+
+    Dim titulo As String
+    Dim autor As String
+    Dim year As String
+    Dim pais As String
+    Dim idioma As String
+    Dim genero As String
+    
+    
+    Dim ultimaFila As Long
+    Dim ultimaFilaAuxiliar As Long
+    Dim cont As Long
+    Dim palabraBusqueda As String
+    
+    palabraBusqueda = Sheets("EEE").Cells(3, 6)
+        palabraBusqueda = "*" & palabraBusqueda & "*"
+    
+    ultimaFila = Sheets("EEE").Range("B" & Rows.Count).End(xlUp).Row
+    
+    If ultimaFila < 6 Then
+    Exit Sub
+    End If
+    
+    For cont = 6 To ultimaFila
+        If Sheets("EEE").Cells(cont, 5) Like palabraBusqueda Then
+            titulo = Sheets("EEE").Cells(cont, 2)
+            autor = Sheets("EEE").Cells(cont, 3)
+            year = Sheets("EEE").Cells(cont, 4)
+            pais = Sheets("EEE").Cells(cont, 5)
+            idioma = Sheets("EEE").Cells(cont, 6)
+            genero = Sheets("EEE").Cells(cont, 7)
+            
+                ultimaFilaAuxiliar = Sheets("Auxiliar").Range("B" & Rows.Count).End(xlUp).Row
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 2) = titulo
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 3) = autor
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 4) = year
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 5) = pais
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 6) = idioma
+                    Sheets("Auxiliar").Cells(ultimaFilaAuxiliar + 1, 7) = genero
+        End If
+    Next cont
+    
+    ultimaFilaAuxiliar = Sheets("Auxiliar").Range("B" & Rows.Count).End(xlUp).Row
+    With Sheets("Auxiliar").Range("B6:G" & ultimaFilaAuxiliar).Font
+        .Name = "Arial"
+        .Size = 9
+        .Italic = True
+    End With
+    MsgBox "proceso terminado", vbInformation, "Resultado"
+End Sub
